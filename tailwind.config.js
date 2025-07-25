@@ -1,5 +1,5 @@
-// Tailwind config for CSS variable-based colors
-export default {
+/* eslint-disable */
+module.exports = {
     darkMode: 'class',
     theme: {
         extend: {
@@ -14,4 +14,8 @@ export default {
         },
     },
     plugins: [],
+    content: [
+        './src/**/*.{js,jsx,ts,tsx}',
+        './public/index.html',
+    ],
 }

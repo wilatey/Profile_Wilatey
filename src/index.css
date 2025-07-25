@@ -78,16 +78,19 @@
     :root {
         --background: 210 40% 98%;
         --foreground: 222 47% 11%;
-
         --card: 0 0% 100%;
-
-        --primary: 250 47% 60%;
+        --primary: 250 45% 60%;
         --primary-foreground: 210 40% 98%;
-
         --border: 214 32% 91%;
     }
 
     .dark {
+        --background: 222 47% 4%;
+        --foreground: 213 31% 91%;
+        --card: 222 47% 8%;
+        --primary: 250 60% 65%;
+        --primary-foreground: 213 31% 91%;
+        --border: 217 33% 20%;
         background-color: var(--color-slate-900);
     }
 
@@ -138,9 +141,9 @@
 }
 
 @utility text-glow {
-    @apply relative text-5xl;
-    text-shadow-xl: 0 0 5px;
-    color: rgba(167, 139, 250, 0.8);
+    @apply relative text-3xl;
+    text-shadow-xl: 0 0 2px;
+    color: rgba(167, 139, 250);
 }
 
 @utility card-hover {
