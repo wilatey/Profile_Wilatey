@@ -1,4 +1,4 @@
-import { ExternalLink, GithubIcon } from "lucide-react";
+import { ArrowBigDown, ArrowBigRight, ArrowRight, ExternalLink, GithubIcon } from "lucide-react";
 
 const projects = [
     {
@@ -12,7 +12,7 @@ const projects = [
     {
         id: 2,
         title: "Wallet transaction viewer",
-        description: "A Web application of connection in crypto wallet",
+        description: "A Web application of crypto wallet",
         github: "https://github.com/wilatey/Wallet-transaction-viewer.git",
         image: "#",
         tags: ["React, TailwindCSS", "Web"]
@@ -42,7 +42,7 @@ export const Project = () => {
                     so on with attention.
                 </p>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
                     {projects.map((project, key) => (
                         <div
                             key={key}
@@ -70,24 +70,34 @@ export const Project = () => {
                             {project.title}
                         </h3>
 
-                        <p className="text-muted-foreground test-sm mb-4">
+                        <p className="text-muted-foreground test-sm mb-5">
                             {project.description}
                         </p>
 
                         <div className="flex justify-between items-center">
-                            <div className="flex ml-3 space-x-3">
+                            <div className="flex ml-5 space-x-3">
                                 <a 
-                                href={project.github}
+                                href={project.github} 
                                 target="_blank"
                                 className="text-foreground/80 hover:text-primary transition-colors duration-300"
                                 > 
-                                    <GithubIcon size={20}/>
+                                    <GithubIcon size={25}/>
                                 </a>
                             </div>
                         </div>
 
                         </div>
                     ))}
+                </div>
+
+                <div className="text-center mt-12">
+                    <a 
+                    href="https://github.com/wilatey"
+                    target="_blank"
+                    className="cosmic-button w-fit flex items-center mx-auto gap-2"
+                    >
+                        View My GitHub <ArrowBigRight size={20}/>
+                    </a>
                 </div>
             </div>
         </section>
