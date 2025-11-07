@@ -1,4 +1,7 @@
 import { ArrowBigDown, ArrowBigRight, ArrowRight, ExternalLink, GithubIcon } from "lucide-react";
+import Whiteboard from "../assets/Whiteboard.png";
+import TransactionViewer from "../assets/TransactionViewer.png";
+import BicycleTracker from "../assets/BicycleTracker.png";
 
 const projects = [
     {
@@ -6,7 +9,7 @@ const projects = [
         title: "Web Collaboration WhiteBoard",
         description: "Multiple users editing for day-planning",
         github: "https://github.com/wilatey/Web-Collaboration-WhiteBoard",
-        image: "../../public/Whiteboard.png",
+        image: Whiteboard,
         tags: ["React", "TailwindCSS", "WebSocket"]
     },
     {
@@ -14,7 +17,7 @@ const projects = [
         title: "Wallet transaction viewer",
         description: "A Web application of crypto wallet",
         github: "https://github.com/wilatey/Wallet-transaction-viewer",
-        image: "../../public/TransactionViewer.png",
+        image: TransactionViewer,
         tags: ["React, TailwindCSS", "Web"]
     },
     {
@@ -22,9 +25,9 @@ const projects = [
         title: "Bicycle tracker application",
         description: "Tracking system in bicycle for mobile users",
         github: "https://github.com/wilatey/Mobile-Bicycle-tracker",
-        image: "../../public/BicycleTracker.png",
+        image: BicycleTracker,
         tags: ["Java, Andriod Studio"]
-    }
+    }   
 ];
 
 
