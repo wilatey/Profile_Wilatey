@@ -3,24 +3,22 @@ import { cn } from "../lib/utili";
 
 const skill = [
     //Front-end
-    { name: "HTML/CSS", level: 80, category: "Frontend" },
+    { name: "HTML/CSS", level: 60, category: "Frontend" },
     { name: "JavaScript", level: 50, category: "Frontend" },
     { name: "React", level: 30, category: "Frontend" },
     { name: "Tailwind CSS", level: 30, category: "Frontend" },
-    { name: "Next.js", level: 20, category: "Frontend" },
-
 
     //Back-end
-    { name: "C++", level: 65, category: "Backend" },
-    { name: "Java", level: 50, category: "Backend" },
+    { name: "C++", level: 70, category: "Backend" },
+    { name: "Java", level: 60, category: "Backend" },
     { name: "Python", level: 40, category: "Backend" },
-    { name: "Node.js", level: 20, category: "Backend" },
+    { name: "Typescript", level: 20, category: "Backend" },
     { name: "MySQL", level: 15, category: "Backend" },
 
 
     //Tools
     { name: "Git/GitHub", level: 50, category: "Tool" },
-    { name: "Docker", level: 30, category: "Tool" },
+    { name: "Jira", level: 30, category: "Tool" },
     { name: "VScode", level: 80, category: "Tool" },
 ];
 
@@ -46,7 +44,7 @@ export const Skills = () => {
                             key={key}
                             onClick={() => setActiveCategory(category)}
                             className={cn(
-                                "px-5 py-2 rounded-full transition-colors duration-300 capitalize",
+                                "px-5 py-2 rounded-full transition-colors duration-300 capitalize cursor-pointer",
                                 activityCategory === category ? "bg-primary text-primary-foreground" : "bg-secondary/70 text-foreground hover:bg-secondary"
                             )}
                         >

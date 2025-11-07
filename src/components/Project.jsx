@@ -5,24 +5,24 @@ const projects = [
         id: 1,
         title: "Web Collaboration WhiteBoard",
         description: "Multiple users editing for day-planning",
-        github: "https://github.com/wilatey/Web-Collabortion-Whiteboard.git",
-        image: "#",
+        github: "https://github.com/wilatey/Web-Collaboration-WhiteBoard",
+        image: "../../public/Whiteboard.png",
         tags: ["React", "TailwindCSS", "WebSocket"]
     },
     {
         id: 2,
         title: "Wallet transaction viewer",
         description: "A Web application of crypto wallet",
-        github: "https://github.com/wilatey/Wallet-transaction-viewer.git",
-        image: "#",
+        github: "https://github.com/wilatey/Wallet-transaction-viewer",
+        image: "../../public/TransactionViewer.png",
         tags: ["React, TailwindCSS", "Web"]
     },
     {
         id: 3,
         title: "Bicycle tracker application",
         description: "Tracking system in bicycle for mobile users",
-        github: "https://github.com/wilatey/Mobile-Bicycle-tracker.git",
-        image: "#",
+        github: "https://github.com/wilatey/Mobile-Bicycle-tracker",
+        image: "../../public/BicycleTracker.png",
         tags: ["Java, Andriod Studio"]
     }
 ];

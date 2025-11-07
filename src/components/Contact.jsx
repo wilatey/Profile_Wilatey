@@ -52,10 +52,10 @@ export const Contact = () => {
                                 <div>
                                     <h4> Email </h4>
                                     <a
-                                        href="mailto:slly0117@gmail.com"
+                                        href="mailto:sllyee0117@gmail.com"
                                         className="text-muted-foreground hover:text-primary transition-colors"
                                     >
-                                        slly0117@gmail.com
+                                        sllyee0117@gmail.com
                                     </a>
                                 </div>
                             </div>
@@ -65,7 +65,7 @@ export const Contact = () => {
                                     <Phone className="h-6 w-6 text-primary" size={20} />
                                 </div>
                                 <div>
-                                    <h4> Phone </h4>
+                                    <h4> Phone & Whatsapp</h4>
                                     <a
                                         href="tel:+85260903502"
                                         className="text-muted-foreground hover:text-primary transition-colors"
