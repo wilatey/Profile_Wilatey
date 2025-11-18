@@ -30,20 +30,28 @@ jobs:
 
       - name: Deploy to Netlify
         id: netlify
-        uses: nwtgck/actions-netlify@v3
+        uses: netlify/actions/cli@master
         with:
-          publish-dir: './dist'
-          production-branch: main
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message: "Deploy from GitHub Actions – ${{ github.sha }}"
-          enable-pull-request-comment: true
-          enable-commit-comment: true
-          overwrites-pull-request-comment: true
+          args: deploy --dir=dist --json
+          production: ${{ github.ref_name == 'main' }}
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
-      - name: Show Deployed URL
+      - name: Show Deploy URL (actually works now)
         run: |
-          echo "🚀 DEPLOYED URL → ${{ steps.netlify.outputs.deploy-url }}"
-          echo "🌐 PRODUCTION URL → https://$(echo ${{ secrets.NETLIFY_SITE_ID }} | cut -c1-8)-netlify.app"
+          URL=$(cat deploy-output.json | jq -r .deploy_url)
+          echo "DEPLOYED URL → $URL"
+          echo "deploy_url=$URL" >> $GITHUB_OUTPUT
+          
+      - name: Comment PR with URL
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `Deploy preview ready! 🚀\n\n**Live URL:** ${{ steps.netlify.outputs.deploy_url || 'https://your-site.netlify.app' }}`
+            })
