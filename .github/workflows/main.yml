@@ -38,20 +38,28 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
-      - name: Show Deploy URL (actually works now)
+      - name: Deploy to Netlify & capture URL
+        id: deploy
         run: |
-          URL=$(cat deploy-output.json | jq -r .deploy_url)
-          echo "DEPLOYED URL → $URL"
-          echo "deploy_url=$URL" >> $GITHUB_OUTPUT
-          
-      - name: Comment PR with URL
-        if: github.event_name == 'pull_request'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: `Deploy preview ready! 🚀\n\n**Live URL:** ${{ steps.netlify.outputs.deploy_url || 'https://your-site.netlify.app' }}`
-            })
+          npm install -g netlify-cli
+
+          if [ "${{ github.ref_name }}" = "main" ]; then
+            DEPLOY_JSON=$(netlify deploy --dir=dist --prod --json)
+          else
+            DEPLOY_JSON=$(netlify deploy --dir=dist --json)
+          fi
+
+          URL=$(echo "$DEPLOY_JSON" | jq -r .deploy_url)
+
+          echo "DEPLOY_URL=$URL" >> $GITHUB_OUTPUT
+          echo "DEPLOY_SSL_URL=$(echo "$DEPLOY_JSON" | jq -r .deploy_ssl_url)" >> $GITHUB_OUTPUT
+
+          echo ""
+          echo "DEPLOY SUCCESSFUL!"
+          echo "Live URL → $URL"
+          echo "HTTPS URL → $(echo "$DEPLOY_JSON" | jq -r .deploy_ssl_url)"
+          echo ""
+
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
