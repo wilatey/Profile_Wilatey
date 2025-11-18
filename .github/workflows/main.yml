@@ -32,22 +32,18 @@ jobs:
         id: netlify
         uses: nwtgck/actions-netlify@v3
         with:
-          publish-dir: ./dist
+          publish-dir: './dist'
           production-branch: main
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: "Deploy from GitHub Actions – ${{ github.sha }}"
           enable-pull-request-comment: true
-          enable-commit-comment: false
+          enable-commit-comment: true
           overwrites-pull-request-comment: true
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        timeout-minutes: 10
 
-      - name: Show Deploy URL
+      - name: Show Deployed URL
         run: |
-          echo ""
-          echo "DEPLOY SUCCESSFUL!"
-          echo "LIVE URL → ${{ steps.netlify.outputs.deploy-url }}"
-          echo "PREVIEW URL → ${{ steps.netlify.outputs.deploy-url }}"
-          echo ""
+          echo "🚀 DEPLOYED URL → ${{ steps.netlify.outputs.deploy-url }}"
+          echo "🌐 PRODUCTION URL → https://$(echo ${{ secrets.NETLIFY_SITE_ID }} | cut -c1-8)-netlify.app"
